@@ -1,0 +1,14 @@
+﻿Feature,Selected,Ranking
+area,True,1
+bathrooms,True,1
+stories,True,1
+parking,True,1
+basement_yes,True,1
+mainroad_yes,True,1
+airconditioning_yes,True,1
+hotwaterheating_yes,True,1
+prefarea_yes,True,1
+furnishingstatus_unfurnished,True,1
+guestroom_yes,False,2
+bedrooms,False,3
+furnishingstatus_semi-furnished,False,4
