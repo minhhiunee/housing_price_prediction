@@ -66,7 +66,7 @@ Project_DS/
 │   └── raw/
 │       └── Housing.csv
 ├── notebooks/
-│   └── 01_housing_price_prediction.ipynb
+│   └── housing_price_prediction.ipynb
 ├── outputs/
 │   ├── figures/
 │   └── tables/
@@ -88,8 +88,8 @@ The project follows these steps:
 6. **Train-Test Split** — Split the dataset into 80% training and 20% testing sets.
 7. **Feature Scaling** — Standardize features using `StandardScaler` (fitted on training set only).
 8. **Multicollinearity Analysis** — Use VIF (Variance Inflation Factor) to detect collinear features.
-9. **Feature Selection** — Apply RFE (Recursive Feature Elimination) with `LinearRegression` to select the most informative features.
-10. **Multiple Linear Regression Training** — Train the model on the standardized training set.
+9. **Feature Selection** — Apply RFE (Recursive Feature Elimination) with `LinearRegression` to select the 10 most informative features out of 13.
+10. **Multiple Linear Regression Training** — Train the model exclusively on the RFE-selected features.
 11. **Model Evaluation** — Evaluate performance using R², RSS, MSE, and RMSE on both sets.
 12. **Residual Analysis** — Analyze error distribution and actual vs. predicted plots.
 
@@ -101,7 +101,22 @@ The project follows these steps:
 
 Multiple Linear Regression estimates the linear relationship between housing price and multiple independent variables. Each regression coefficient represents the expected change in price for a unit change in the corresponding feature, holding all other features constant.
 
-The model is implemented using `sklearn.linear_model.LinearRegression`.
+The model is implemented using `sklearn.linear_model.LinearRegression`, trained on the **10 features selected by RFE**:
+
+| Feature | Description |
+|---|---|
+| `area` | House area (sq ft) |
+| `bathrooms` | Number of bathrooms |
+| `stories` | Number of stories |
+| `parking` | Number of parking spots |
+| `mainroad_yes` | On main road |
+| `basement_yes` | Has basement |
+| `hotwaterheating_yes` | Has hot water heating |
+| `airconditioning_yes` | Has air conditioning |
+| `prefarea_yes` | In preferred area |
+| `furnishingstatus_unfurnished` | Unfurnished status |
+
+> Features eliminated by RFE: `bedrooms`, `guestroom_yes`, `furnishingstatus_semi-furnished`.
 
 ---
 
@@ -115,6 +130,24 @@ The following metrics are used to assess model performance:
 | **Residual Sum of Squares (RSS)** | Total squared difference between actual and predicted values |
 | **Mean Squared Error (MSE)** | Average squared prediction error |
 | **Root Mean Squared Error (RMSE)** | Square root of MSE; in the same unit as the target |
+
+---
+
+## Results
+
+The Multiple Linear Regression model was trained on 10 RFE-selected features and evaluated on both training and testing sets:
+
+| Set | R² | RMSE |
+|---|---|---|
+| **Training** | 0.6579 | 1,080,025 |
+| **Testing** | 0.7216 | 981,706 |
+
+> The model generalizes well to unseen data, with the test R² (0.7216) slightly exceeding the training R² (0.6579), indicating no overfitting.
+
+Detailed results are available in:
+- Notebook: `notebooks/housing_price_prediction.ipynb`
+- Tables: `outputs/tables/`
+- Figures: `outputs/figures/`
 
 ---
 
@@ -151,20 +184,10 @@ jupyter notebook
 Then open:
 
 ```
-notebooks/01_housing_price_prediction.ipynb
+notebooks/housing_price_prediction.ipynb
 ```
 
 Run all cells sequentially from top to bottom.
-
----
-
-## Results
-
-Detailed model evaluation results (R², RSS, MSE, RMSE on training and testing sets) are available in the main notebook:
-
-```
-notebooks/01_housing_price_prediction.ipynb
-```
 
 ---
 
@@ -190,4 +213,3 @@ notebooks/01_housing_price_prediction.ipynb
 
 - Nguyễn Minh Hiếu: 0.8
 - Vũ Nam Hải: 0.2
-
