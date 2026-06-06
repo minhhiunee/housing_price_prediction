@@ -186,7 +186,8 @@ notebooks/01_housing_price_prediction.ipynb
 
 ---
 
-## Author
+## Authors
 
-- Nguyễn Minh Hiếu
-- University of Engineering and Technology, Vietnam National University, Hanoi
+- Nguyễn Minh Hiếu: 0.8
+- Vũ Nam Hải: 0.2
+
