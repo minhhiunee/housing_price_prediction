@@ -211,5 +211,5 @@ Run all cells sequentially from top to bottom.
 
 ## Authors
 
-- Nguyễn Minh Hiếu: 0.95
-- Vũ Nam Hải: 0.05
+- Nguyễn Minh Hiếu: 0.9
+- Vũ Nam Hải: 0.1
